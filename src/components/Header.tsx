@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ messageCount, onAdminLogin }) => {
           <MessageCircle size={24} className="text-indigo-500" />
           <h1 className="text-xl font-bold text-white">Anonymous Bubbles</h1>
           <span className="ml-3 bg-indigo-500/20 text-indigo-300 text-sm px-2 py-0.5 rounded-full">
-            {messageCount} approved
+            {messageCount}
           </span>
         </div>
         
