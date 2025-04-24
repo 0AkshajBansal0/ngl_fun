@@ -3,7 +3,7 @@ import { Message } from '../types';
 import { getRandomBubbleColor, getRandomPosition, getRandomSize } from '../utils/colors';
 
 const ADMIN_PASSWORD = 'Baniya';
-const API_URL = 'http://localhost:3000/api';
+const API_URL = '/api';
 
 export function useMessages() {
   const [messages, setMessages] = useState<Message[]>([]);
