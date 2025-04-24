@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
-const app = express(); // <-- Moved to top before usage
+const app = express();
 const port = 3000;
 
 const __filename = fileURLToPath(import.meta.url);
@@ -15,12 +15,7 @@ dotenv.config();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(join(__dirname, '/dist'))); // ⬅️ Now works fine
-
-app.get('*', (req, res) => {
-  res.sendFile(join(__dirname, '/dist/index.html'));
-});
-
+app.use(express.static(join(__dirname, '/dist')));
 
 const uri = process.env.VITE_MONGODB_URI;
 if (!uri) {
