@@ -3,18 +3,24 @@ import { MongoClient } from 'mongodb';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { dirname, join } from 'path';
+
+const app = express(); // <-- Moved to top before usage
+const port = 3000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 dotenv.config();
 
-const app = express();
-const port = 3000;
-
 app.use(cors());
 app.use(express.json());
+app.use(express.static(join(__dirname, '/dist'))); // ⬅️ Now works fine
+
+app.get('*', (req, res) => {
+  res.sendFile(join(__dirname, '/dist/index.html'));
+});
+
 
 const uri = process.env.VITE_MONGODB_URI;
 if (!uri) {
